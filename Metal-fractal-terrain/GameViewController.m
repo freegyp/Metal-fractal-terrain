@@ -6,58 +6,20 @@
 @import simd;
 @import QuartzCore.CAMetalLayer;
 
+#include <stdlib.h>
+#include <time.h>
+
 // The max number of command buffers in flight
 static const NSUInteger g_max_inflight_buffers = 3;
 
 // Max API memory buffer size.
-static const size_t MAX_BYTES_PER_FRAME = 1024*1024;
+static const size_t MAX_BYTES_PER_FRAME = 8192*8192;
 
-float cubeVertexData[216] =
-{
-    // Data layout for each line below is:
-    // positionX, positionY, positionZ,     normalX, normalY, normalZ,
-    0.5, -0.5, 0.5,   0.0, -1.0,  0.0,
-    -0.5, -0.5, 0.5,   0.0, -1.0, 0.0,
-    -0.5, -0.5, -0.5,   0.0, -1.0,  0.0,
-    0.5, -0.5, -0.5,  0.0, -1.0,  0.0,
-    0.5, -0.5, 0.5,   0.0, -1.0,  0.0,
-    -0.5, -0.5, -0.5,   0.0, -1.0,  0.0,
-    
-    0.5, 0.5, 0.5,    1.0, 0.0,  0.0,
-    0.5, -0.5, 0.5,   1.0,  0.0,  0.0,
-    0.5, -0.5, -0.5,  1.0,  0.0,  0.0,
-    0.5, 0.5, -0.5,   1.0, 0.0,  0.0,
-    0.5, 0.5, 0.5,    1.0, 0.0,  0.0,
-    0.5, -0.5, -0.5,  1.0,  0.0,  0.0,
-    
-    -0.5, 0.5, 0.5,    0.0, 1.0,  0.0,
-    0.5, 0.5, 0.5,    0.0, 1.0,  0.0,
-    0.5, 0.5, -0.5,   0.0, 1.0,  0.0,
-    -0.5, 0.5, -0.5,   0.0, 1.0,  0.0,
-    -0.5, 0.5, 0.5,    0.0, 1.0,  0.0,
-    0.5, 0.5, -0.5,   0.0, 1.0,  0.0,
-    
-    -0.5, -0.5, 0.5,  -1.0,  0.0, 0.0,
-    -0.5, 0.5, 0.5,   -1.0, 0.0,  0.0,
-    -0.5, 0.5, -0.5,  -1.0, 0.0,  0.0,
-    -0.5, -0.5, -0.5,  -1.0,  0.0,  0.0,
-    -0.5, -0.5, 0.5,  -1.0,  0.0, 0.0,
-    -0.5, 0.5, -0.5,  -1.0, 0.0,  0.0,
-    
-    0.5, 0.5,  0.5,  0.0, 0.0,  1.0,
-    -0.5, 0.5,  0.5,  0.0, 0.0,  1.0,
-    -0.5, -0.5, 0.5,   0.0,  0.0, 1.0,
-    -0.5, -0.5, 0.5,   0.0,  0.0, 1.0,
-    0.5, -0.5, 0.5,   0.0,  0.0,  1.0,
-    0.5, 0.5,  0.5,  0.0, 0.0,  1.0,
-    
-    0.5, -0.5, -0.5,  0.0,  0.0, -1.0,
-    -0.5, -0.5, -0.5,   0.0,  0.0, -1.0,
-    -0.5, 0.5, -0.5,  0.0, 0.0, -1.0,
-    0.5, 0.5, -0.5,  0.0, 0.0, -1.0,
-    0.5, -0.5, -0.5,  0.0,  0.0, -1.0,
-    -0.5, 0.5, -0.5,  0.0, 0.0, -1.0
-};
+float heights[257][257];
+float vertices[257][257][6];
+float terrainVertexData[4645152];
+
+
 
 typedef struct
 {
@@ -109,8 +71,120 @@ typedef struct
     _constantDataBufferIndex = 0;
     _inflight_semaphore = dispatch_semaphore_create(g_max_inflight_buffers);
     
+    for (int i=0; i<257; i++) {
+        for (int j=0; j<257; j++) {
+            heights[i][j]=0;
+        }
+    }
+    //Trying fractal terrain.
+    float maxHeight=6;
+    float heightDegrade=2;
+    float heightConterOffset=1.5;
+    int range=256;
+    srand(time(NULL));
+    for (int i=0; i<8; i++) {
+        for (int a=range/2; a<256; a+=range) {
+            for (int b=range/2; b<256; b+=range) {
+                heights[a][b]=(heights[a-range/2][b-range/2]+
+                               heights[a+range/2][b-range/2]+
+                               heights[a+range/2][b+range/2]+
+                               heights[a-range/2][b+range/2])/4;
+                heights[a][b]+=maxHeight*(rand()%1000+1)/1000-maxHeight/heightConterOffset;
+            }
+        }
+        for (int a=0; a<=256; a+=range/2) {
+            for (int b=0; b<=256; b+=range/2) {
+                if ((a+b)%range!=0) {
+                    float upper,lower,left,right;
+                    if (a==0) upper=0;
+                    else upper=heights[a-range/2][b];
+                    if (a==256) lower=0;
+                    else lower=heights[a+range/2][b];
+                    if (b==0) left=0;
+                    else left=heights[a][b-range/2];
+                    if (b==256) right=0;
+                    else right=heights[a][b+range/2];
+                    heights[a][b]=(upper+lower+left+right)/4;
+                    heights[a][b]+=maxHeight*(rand()%1000+1)/1000-maxHeight/heightConterOffset;
+                }
+            }
+        }
+        maxHeight/=heightDegrade;
+        range/=2;
+    }
+    for(int i=0;i<=256;i++){
+        for(int j=0;j<=256;j++){
+            vertices[i][j][0]=16*(float)j/256-8;
+            vertices[i][j][1]=16*(float)i/256-8;
+            vertices[i][j][2]=heights[i][j];
+        }
+    }
+    for(int i=1;i<256;i++){
+        for (int j=1; j<256; j++) {
+            vector_float3 up=(vector_float3){vertices[i][j][0]-vertices[i-1][j][0],
+                vertices[i][j][1]-vertices[i-1][j][1],
+                vertices[i][j][2]-vertices[i-1][j][2]};
+            vector_float3 left=(vector_float3){vertices[i][j][0]-vertices[i][j-1][0],
+                vertices[i][j][1]-vertices[i][j-1][1],
+                vertices[i][j][2]-vertices[i][j-1][2]};
+            vector_float3 upright=(vector_float3){vertices[i][j][0]-vertices[i-1][j+1][0],
+                vertices[i][j][1]-vertices[i-1][j+1][1],
+                vertices[i][j][2]-vertices[i-1][j+1][2]};
+            vector_float3 right=(vector_float3){vertices[i][j][0]-vertices[i][j+1][0],
+                vertices[i][j][1]-vertices[i][j+1][1],
+                vertices[i][j][2]-vertices[i][j+1][2]};
+            vector_float3 lower=(vector_float3){vertices[i][j][0]-vertices[i+1][j][0],
+                vertices[i][j][1]-vertices[i+1][j][1],
+                vertices[i][j][2]-vertices[i+1][j][2]};
+            vector_float3 lowerleft=(vector_float3){vertices[i][j][0]-vertices[i+1][j-1][0],
+                vertices[i][j][1]-vertices[i+1][j-1][1],
+                vertices[i][j][2]-vertices[i+1][j-1][2]};
+            vector_float3 sumnormal=vector_cross(left,up)+
+            vector_cross(up,upright)+
+            vector_cross(upright,right)+
+            vector_cross(right,lower)+
+            vector_cross(lower,lowerleft)+
+            vector_cross(lowerleft,left);
+            sumnormal=vector_normalize(sumnormal);
+            vertices[i][j][3]=sumnormal[0];
+            vertices[i][j][4]=sumnormal[1];
+            vertices[i][j][5]=sumnormal[2];
+        }
+    }
+    
+    for (int i=1; i<255; i++) {
+        for (int j=1; j<255; j++) {
+            int startIndex=((i-1)*254+j-1)*72;
+            float normal_coef=-1;
+            for (int a=0; a<2; a++) {
+                int tempStart=startIndex+36*a;
+                for (int b=0; b<3; b++) {
+                    terrainVertexData[tempStart+b]=vertices[i][j][b];
+                    terrainVertexData[tempStart+6+b]=vertices[i][j+1][b];
+                    terrainVertexData[tempStart+12+b]=vertices[i+1][j][b];
+                    terrainVertexData[tempStart+18+b]=vertices[i][j+1][b];
+                    terrainVertexData[tempStart+24+b]=vertices[i+1][j+1][b];
+                    terrainVertexData[tempStart+30+b]=vertices[i+1][j][b];
+                }
+                for (int b=3; b<6; b++) {
+                    terrainVertexData[tempStart+b]=vertices[i][j][b]*normal_coef;
+                    terrainVertexData[tempStart+6+b]=vertices[i][j+1][b]*normal_coef;
+                    terrainVertexData[tempStart+12+b]=vertices[i+1][j][b]*normal_coef;
+                    terrainVertexData[tempStart+18+b]=vertices[i][j+1][b]*normal_coef;
+                    terrainVertexData[tempStart+24+b]=vertices[i+1][j+1][b]*normal_coef;
+                    terrainVertexData[tempStart+30+b]=vertices[i+1][j][b]*normal_coef;
+                }
+                normal_coef*=-1;
+            }
+        }
+    }
+    
+    //Try fractal terrain until here.
+    
     [self _setupMetal];
     [self _loadAssets];
+    
+    _rotation = 22.5f * (M_PI / 180.0f);
     
     _timer = [CADisplayLink displayLinkWithTarget:self selector:@selector(_gameloop)];
     [_timer addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
@@ -167,7 +241,7 @@ typedef struct
     id <MTLFunction> vertexProgram = [_defaultLibrary newFunctionWithName:@"lighting_vertex"];
     
     // Setup the vertex buffers
-    _vertexBuffer = [_device newBufferWithBytes:cubeVertexData length:sizeof(cubeVertexData) options:MTLResourceOptionCPUCacheModeDefault];
+    _vertexBuffer = [_device newBufferWithBytes:terrainVertexData length:sizeof(terrainVertexData) options:MTLResourceOptionCPUCacheModeDefault];
     _vertexBuffer.label = @"Vertices";
     
     // Create a reusable pipeline state
@@ -243,7 +317,7 @@ typedef struct
     [renderEncoder setVertexBuffer:_dynamicConstantBuffer offset:(sizeof(uniforms_t) * _constantDataBufferIndex) atIndex:1 ];
     
     // Tell the render context we want to draw our primitives
-    [renderEncoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:36 instanceCount:1];
+    [renderEncoder drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:254*254*12 instanceCount:1];
     [renderEncoder popDebugGroup];
     
     // We're done encoding commands
@@ -276,9 +350,9 @@ typedef struct
 
 - (void)_update
 {
-    matrix_float4x4 base_model = matrix_multiply(matrix_from_translation(0.0f, 0.0f, 5.0f), matrix_from_rotation(_rotation, 0.0f, 1.0f, 0.0f));
+    matrix_float4x4 base_model = matrix_multiply(matrix_from_translation(0.0f, 0.0f, 5.0f), matrix_from_rotation(_rotation, 1.0f, 0.0f, 0.0f));
     matrix_float4x4 base_mv = matrix_multiply(_viewMatrix, base_model);
-    matrix_float4x4 modelViewMatrix = matrix_multiply(base_mv, matrix_from_rotation(_rotation, 1.0f, 1.0f, 1.0f));
+    matrix_float4x4 modelViewMatrix = matrix_multiply(base_mv, matrix_from_rotation(_rotation, 1.0f, 0.0f, 0.0f));
     
     _uniform_buffer.normal_matrix = matrix_invert(matrix_transpose(modelViewMatrix));
     _uniform_buffer.modelview_projection_matrix = matrix_multiply(_projectionMatrix, modelViewMatrix);
@@ -287,7 +361,7 @@ typedef struct
     uint8_t *bufferPointer = (uint8_t *)[_dynamicConstantBuffer contents] + (sizeof(uniforms_t) * _constantDataBufferIndex);
     memcpy(bufferPointer, &_uniform_buffer, sizeof(uniforms_t));
     
-    _rotation += 0.01f;
+    
 }
 
 // The main game loop called by the CADisplayLine timer
