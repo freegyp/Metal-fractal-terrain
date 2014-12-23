@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		843794551A491BAB0050EB25 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 843794541A491BAB0050EB25 /* main.m */; };
+		843794581A491BAB0050EB25 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 843794571A491BAB0050EB25 /* AppDelegate.m */; };
+		8437945B1A491BAB0050EB25 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8437945A1A491BAB0050EB25 /* GameViewController.m */; };
+		8437945D1A491BAB0050EB25 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8437945C1A491BAB0050EB25 /* Shaders.metal */; };
+		843794601A491BAB0050EB25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8437945E1A491BAB0050EB25 /* Main.storyboard */; };
+		843794621A491BAB0050EB25 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 843794611A491BAB0050EB25 /* Images.xcassets */; };
+		843794651A491BAB0050EB25 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843794631A491BAB0050EB25 /* LaunchScreen.xib */; };
+		843794711A491BAC0050EB25 /* Metal_fractal_terrainTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 843794701A491BAC0050EB25 /* Metal_fractal_terrainTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8437946B1A491BAC0050EB25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 843794471A491BAB0050EB25 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8437944E1A491BAB0050EB25;
+			remoteInfo = "Metal-fractal-terrain";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8437944F1A491BAB0050EB25 /* Metal-fractal-terrain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Metal-fractal-terrain.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		843794531A491BAB0050EB25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		843794541A491BAB0050EB25 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		843794561A491BAB0050EB25 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		843794571A491BAB0050EB25 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		843794591A491BAB0050EB25 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		8437945A1A491BAB0050EB25 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		8437945C1A491BAB0050EB25 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		8437945F1A491BAB0050EB25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		843794611A491BAB0050EB25 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		843794641A491BAB0050EB25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		8437946A1A491BAC0050EB25 /* Metal-fractal-terrainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Metal-fractal-terrainTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8437946F1A491BAC0050EB25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		843794701A491BAC0050EB25 /* Metal_fractal_terrainTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Metal_fractal_terrainTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8437944C1A491BAB0050EB25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		843794671A491BAC0050EB25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		843794461A491BAB0050EB25 = {
+			isa = PBXGroup;
+			children = (
+				843794511A491BAB0050EB25 /* Metal-fractal-terrain */,
+				8437946D1A491BAC0050EB25 /* Metal-fractal-terrainTests */,
+				843794501A491BAB0050EB25 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		843794501A491BAB0050EB25 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8437944F1A491BAB0050EB25 /* Metal-fractal-terrain.app */,
+				8437946A1A491BAC0050EB25 /* Metal-fractal-terrainTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		843794511A491BAB0050EB25 /* Metal-fractal-terrain */ = {
+			isa = PBXGroup;
+			children = (
+				843794561A491BAB0050EB25 /* AppDelegate.h */,
+				843794571A491BAB0050EB25 /* AppDelegate.m */,
+				843794591A491BAB0050EB25 /* GameViewController.h */,
+				8437945A1A491BAB0050EB25 /* GameViewController.m */,
+				8437945C1A491BAB0050EB25 /* Shaders.metal */,
+				8437945E1A491BAB0050EB25 /* Main.storyboard */,
+				843794611A491BAB0050EB25 /* Images.xcassets */,
+				843794631A491BAB0050EB25 /* LaunchScreen.xib */,
+				843794521A491BAB0050EB25 /* Supporting Files */,
+			);
+			path = "Metal-fractal-terrain";
+			sourceTree = "<group>";
+		};
+		843794521A491BAB0050EB25 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				843794531A491BAB0050EB25 /* Info.plist */,
+				843794541A491BAB0050EB25 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8437946D1A491BAC0050EB25 /* Metal-fractal-terrainTests */ = {
+			isa = PBXGroup;
+			children = (
+				843794701A491BAC0050EB25 /* Metal_fractal_terrainTests.m */,
+				8437946E1A491BAC0050EB25 /* Supporting Files */,
+			);
+			path = "Metal-fractal-terrainTests";
+			sourceTree = "<group>";
+		};
+		8437946E1A491BAC0050EB25 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8437946F1A491BAC0050EB25 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8437944E1A491BAB0050EB25 /* Metal-fractal-terrain */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 843794741A491BAC0050EB25 /* Build configuration list for PBXNativeTarget "Metal-fractal-terrain" */;
+			buildPhases = (
+				8437944B1A491BAB0050EB25 /* Sources */,
+				8437944C1A491BAB0050EB25 /* Frameworks */,
+				8437944D1A491BAB0050EB25 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Metal-fractal-terrain";
+			productName = "Metal-fractal-terrain";
+			productReference = 8437944F1A491BAB0050EB25 /* Metal-fractal-terrain.app */;
+			productType = "com.apple.product-type.application";
+		};
+		843794691A491BAC0050EB25 /* Metal-fractal-terrainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 843794771A491BAC0050EB25 /* Build configuration list for PBXNativeTarget "Metal-fractal-terrainTests" */;
+			buildPhases = (
+				843794661A491BAC0050EB25 /* Sources */,
+				843794671A491BAC0050EB25 /* Frameworks */,
+				843794681A491BAC0050EB25 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8437946C1A491BAC0050EB25 /* PBXTargetDependency */,
+			);
+			name = "Metal-fractal-terrainTests";
+			productName = "Metal-fractal-terrainTests";
+			productReference = 8437946A1A491BAC0050EB25 /* Metal-fractal-terrainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		843794471A491BAB0050EB25 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = gyp;
+				TargetAttributes = {
+					8437944E1A491BAB0050EB25 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					843794691A491BAC0050EB25 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 8437944E1A491BAB0050EB25;
+					};
+				};
+			};
+			buildConfigurationList = 8437944A1A491BAB0050EB25 /* Build configuration list for PBXProject "Metal-fractal-terrain" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 843794461A491BAB0050EB25;
+			productRefGroup = 843794501A491BAB0050EB25 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8437944E1A491BAB0050EB25 /* Metal-fractal-terrain */,
+				843794691A491BAC0050EB25 /* Metal-fractal-terrainTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8437944D1A491BAB0050EB25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				843794601A491BAB0050EB25 /* Main.storyboard in Resources */,
+				843794651A491BAB0050EB25 /* LaunchScreen.xib in Resources */,
+				843794621A491BAB0050EB25 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		843794681A491BAC0050EB25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8437944B1A491BAB0050EB25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8437945D1A491BAB0050EB25 /* Shaders.metal in Sources */,
+				843794581A491BAB0050EB25 /* AppDelegate.m in Sources */,
+				8437945B1A491BAB0050EB25 /* GameViewController.m in Sources */,
+				843794551A491BAB0050EB25 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		843794661A491BAC0050EB25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				843794711A491BAC0050EB25 /* Metal_fractal_terrainTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8437946C1A491BAC0050EB25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8437944E1A491BAB0050EB25 /* Metal-fractal-terrain */;
+			targetProxy = 8437946B1A491BAC0050EB25 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8437945E1A491BAB0050EB25 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8437945F1A491BAB0050EB25 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		843794631A491BAB0050EB25 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				843794641A491BAB0050EB25 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		843794721A491BAC0050EB25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		843794731A491BAC0050EB25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		843794751A491BAC0050EB25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Metal-fractal-terrain/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		843794761A491BAC0050EB25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Metal-fractal-terrain/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		843794781A491BAC0050EB25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Metal-fractal-terrainTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Metal-fractal-terrain.app/Metal-fractal-terrain";
+			};
+			name = Debug;
+		};
+		843794791A491BAC0050EB25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Metal-fractal-terrainTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Metal-fractal-terrain.app/Metal-fractal-terrain";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8437944A1A491BAB0050EB25 /* Build configuration list for PBXProject "Metal-fractal-terrain" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843794721A491BAC0050EB25 /* Debug */,
+				843794731A491BAC0050EB25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		843794741A491BAC0050EB25 /* Build configuration list for PBXNativeTarget "Metal-fractal-terrain" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843794751A491BAC0050EB25 /* Debug */,
+				843794761A491BAC0050EB25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		843794771A491BAC0050EB25 /* Build configuration list for PBXNativeTarget "Metal-fractal-terrainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843794781A491BAC0050EB25 /* Debug */,
+				843794791A491BAC0050EB25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 843794471A491BAB0050EB25 /* Project object */;
+}
