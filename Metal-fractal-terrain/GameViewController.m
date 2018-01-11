@@ -281,6 +281,9 @@ typedef struct
         //  Then allocate one of the proper size
         
         MTLTextureDescriptor* desc = [MTLTextureDescriptor texture2DDescriptorWithPixelFormat: MTLPixelFormatDepth32Float width: texture.width height: texture.height mipmapped: NO];
+        
+        desc.usage = MTLTextureUsageRenderTarget;
+        
         _depthTex = [_device newTextureWithDescriptor: desc];
         _depthTex.label = @"Depth";
         
@@ -304,6 +307,8 @@ typedef struct
     // obtain a drawable texture for this render pass and set up the renderpass descriptor for the command encoder to render into
     id <CAMetalDrawable> drawable = [self currentDrawable];
     [self setupRenderPassDescriptorForTexture:drawable.texture];
+    
+    
     
     // Create a render command encoder so we can render into something
     id <MTLRenderCommandEncoder> renderEncoder = [commandBuffer renderCommandEncoderWithDescriptor:_renderPassDescriptor];
@@ -350,7 +355,7 @@ typedef struct
 
 - (void)_update
 {
-    matrix_float4x4 base_model = matrix_multiply(matrix_from_translation(0.0f, 0.0f, 5.0f), matrix_from_rotation(_rotation, 1.0f, 0.0f, 0.0f));
+    matrix_float4x4 base_model = matrix_multiply(matrix_from_translation(0.0f, 0.0f, 7.0f), matrix_from_rotation(_rotation, 1.2f, 0.0f, 0.0f));
     matrix_float4x4 base_mv = matrix_multiply(_viewMatrix, base_model);
     matrix_float4x4 modelViewMatrix = matrix_multiply(base_mv, matrix_from_rotation(_rotation, 1.0f, 0.0f, 0.0f));
     
