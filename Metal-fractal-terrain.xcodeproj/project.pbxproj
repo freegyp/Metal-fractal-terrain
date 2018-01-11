@@ -171,6 +171,8 @@
 				TargetAttributes = {
 					8437944E1A491BAB0050EB25 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = YD2X49JKR9;
+						ProvisioningStyle = Automatic;
 					};
 					843794691A491BAC0050EB25 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -348,9 +350,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guodong Wang (2NNCK9VP87)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YD2X49JKR9;
 				INFOPLIST_FILE = "Metal-fractal-terrain/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -359,9 +366,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guodong Wang (2NNCK9VP87)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YD2X49JKR9;
 				INFOPLIST_FILE = "Metal-fractal-terrain/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -418,6 +430,7 @@
 				843794761A491BAC0050EB25 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		843794771A491BAC0050EB25 /* Build configuration list for PBXNativeTarget "Metal-fractal-terrainTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +439,7 @@
 				843794791A491BAC0050EB25 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
